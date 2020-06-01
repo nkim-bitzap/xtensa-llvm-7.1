@@ -6,6 +6,7 @@ tablegen(LLVM XtensaGenDAGISel.inc -gen-dag-isel)
 tablegen(LLVM XtensaGenInstrInfo.inc -gen-instr-info)
 tablegen(LLVM XtensaGenRegisterInfo.inc -gen-register-info)
 tablegen(LLVM XtensaGenSubtargetInfo.inc -gen-subtarget)
+tablegen(LLVM XtensaGenDisassemblerTables.inc -gen-disassembler)
 
 add_public_tablegen_target(XtensaCommonTableGen)
 
@@ -21,10 +22,11 @@ add_llvm_target(XtensaCodeGen
   XtensaSubtarget.cpp
   XtensaTargetMachine.cpp
   XtensaTargetObjectFile.cpp
-  XtensaTargetStreamer.cpp
   XtensaSelectionDAGInfo.cpp
-)
+  )
 
 add_subdirectory(InstPrinter)
 add_subdirectory(MCTargetDesc)
 add_subdirectory(TargetInfo)
+add_subdirectory(Disassembler)
+

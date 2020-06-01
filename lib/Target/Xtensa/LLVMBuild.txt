@@ -16,7 +16,7 @@
 ;===------------------------------------------------------------------------===;
 
 [common]
-subdirectories = InstPrinter MCTargetDesc TargetInfo
+subdirectories = Disassembler InstPrinter MCTargetDesc TargetInfo
 
 [component_0]
 type = TargetGroup
@@ -37,6 +37,7 @@ required_libraries =
   SelectionDAG
   Support
   Target
+  TransformUtils
   XtensaAsmPrinter
   XtensaDesc
   XtensaInfo

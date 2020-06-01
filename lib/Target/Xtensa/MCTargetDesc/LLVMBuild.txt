@@ -19,5 +19,9 @@
 type = Library
 name = XtensaDesc
 parent = Xtensa
-required_libraries = MC XtensaAsmPrinter XtensaInfo Support
+required_libraries =
+  MC
+  Support
+  XtensaAsmPrinter
+  XtensaInfo
 add_to_library_groups = Xtensa

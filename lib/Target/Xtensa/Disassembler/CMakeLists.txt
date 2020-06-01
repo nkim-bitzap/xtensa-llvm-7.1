@@ -1,3 +1,3 @@
-add_llvm_library(LLVMMipsDisassembler
-  MipsDisassembler.cpp
+add_llvm_library(LLVMXtensaDisassembler
+  XtensaDisassembler.cpp
   )

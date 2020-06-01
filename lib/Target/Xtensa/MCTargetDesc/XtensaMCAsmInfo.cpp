@@ -7,7 +7,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "XtensaMCAsmInfo.h"
+#include "MCTargetDesc/XtensaMCAsmInfo.h"
 
 using namespace llvm;
 

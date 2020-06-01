@@ -15,10 +15,14 @@
 #define LLVM_LIB_TARGET_XTENSA_MCTARGETDESC_XTENSAMCTARGETDESC_H
 
 namespace llvm {
+
 class Target;
 
+// provide a creator function for the Xtensa target to be used
+// for target registering, see 'XtensaTargetMachine.cpp'
 Target &getTheXtensaTarget();
-} // end namespace llvm
+
+} // end of namespace llvm
 
 // Defines symbolic names for Xtensa registers as found in the
 // auto-generated file
@@ -33,7 +37,6 @@ Target &getTheXtensaTarget();
 // Defines a subtarget names for Xtensa as found in the auto-
 // generated file
 #define GET_SUBTARGETINFO_ENUM
-#include "XTensaGenSubtargetInfo.inc"
+#include "XtensaGenSubtargetInfo.inc"
 
-#endif /* LLVM_LIB_TARGET_XTENSA_MCTARGETDESC_XTENSAMCTARGETDESC_H */
-~                                                                       
+#endif // LLVM_LIB_TARGET_XTENSA_MCTARGETDESC_XTENSAMCTARGETDESC_H

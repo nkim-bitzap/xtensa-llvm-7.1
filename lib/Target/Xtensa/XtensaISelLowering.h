@@ -16,10 +16,13 @@
 #define LLVM_LIB_TARGET_XTENSA_XTENSAISELLOWERING_H
 
 #include "Xtensa.h"
+
 #include "llvm/CodeGen/SelectionDAG.h"
 #include "llvm/CodeGen/TargetLowering.h"
 
 namespace llvm {
+
+class XtensaSubtarget;
 
 class XtensaTargetLowering : public TargetLowering {
     const TargetMachine &_TM;
@@ -59,6 +62,7 @@ class XtensaTargetLowering : public TargetLowering {
                         const SmallVectorImpl<SDValue> &OutVals,
                         const SDLoc &dl,
                         SelectionDAG &DAG) const override;
+};
 
 } // end of namespace llvm
 
