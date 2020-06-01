@@ -20,6 +20,10 @@
 
 using namespace llvm;
 
+//------------------------------------------------------------------------------
+// XtensaTargetObjectFile implementation
+//------------------------------------------------------------------------------
+
 void XtensaTargetObjectFile::Initialize(MCContext &Ctx,
                                         const TargetMachine &TM)
 {}
@@ -30,7 +34,7 @@ MCSection*
 XtensaTargetObjectFile::getExplicitSectionGlobal(
                                       const GlobalObject *GO,
                                       SectionKind Kind,
-                                      const TargetMachine &TM) const override
+                                      const TargetMachine &TM) const
 {
   assert(false && "XtensaTargetObjectFile::getExplicitSectionGlobal"
          " not implemented");
@@ -44,7 +48,7 @@ MCSection*
 XtensaTargetObjectFile::SelectSectionForGlobal(
                                       const GlobalObject *GO,
                                       SectionKind Kind,
-                                      const TargetMachine &TM) const override
+                                      const TargetMachine &TM) const
 {
   assert(false && "XtensaTargetObjectFile::SelectSectionForGlobal"
          " not implemented");
@@ -59,12 +63,11 @@ XtensaTargetObjectFile::getSectionForConstant(
                                       const DataLayout &DL,
                                       SectionKind Kind,
                                       const Constant *C,
-                                      unsigned &Align) const override
+                                      unsigned &Align) const
 {
   assert(false && "XtensaTargetObjectFile::getSectionForConstant"
          " not implemented");
 
   return 0;
 }
-
 

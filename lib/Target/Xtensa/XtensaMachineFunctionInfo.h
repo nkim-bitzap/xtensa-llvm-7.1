@@ -29,5 +29,7 @@ class XtensaMachineFunctionInfo : public MachineFunctionInfo {
     explicit XtensaMachineFunctionInfo(MachineFunction &MF);
 };
 
+} // end of namespace llvm
+
 #endif /* LLVM_LIB_TARGET_XTENSA_XTENSAMACHINEFUNCTIONINFO_H */
 

@@ -38,7 +38,7 @@ def Window_CC_Xtensa : CallingConv<[
 
   // if on stack, integral types up to 4 bytes require 4
   // bytes and are 4-byte aligned
-  CCIfType<[i32], CCAssignToStack<4, 4>>
+  CCIfType<[i32], CCAssignToStack<4, 4>>,
 
   // even though represented by a i32 bit pair, the long long
   // values need to be aligned properly
@@ -63,7 +63,7 @@ def Call0_CC_Xtensa : CallingConv<[
  
   // if on stack, integral types up to 4 bytes require 4
   // bytes and are 4-byte aligned
-  CCIfType<[i32], CCAssignToStack<4, 4>>
+  CCIfType<[i32], CCAssignToStack<4, 4>>,
 
   // even though represented by a i32 bit pair, the long long
   // values need to be aligned properly

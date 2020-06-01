@@ -48,5 +48,7 @@ struct XtensaRegisterInfo : public XtensaGenRegisterInfo {
     unsigned getFrameRegister(const MachineFunction &MF) const override;
 };
 
+} // end of namespace llvm
+
 #endif /* LLVM_LIB_TARGET_XTENSA_XTENSAREGISTERINFO_H */ 
 

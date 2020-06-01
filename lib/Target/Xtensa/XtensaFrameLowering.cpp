@@ -12,10 +12,9 @@
 //===----------------------------------------------------------------------===//
 
 #include "Xtensa.h"
+#include "XtensaSubtarget.h"
 #include "XtensaFrameLowering.h"
 #include "XtensaInstrInfo.h"
-#include "XtensaMachineFunctionInfo.h"
-#include "XtensaSubtarget.h"
 
 #include <cassert>
 
@@ -41,7 +40,7 @@ void XtensaFrameLowering::emitPrologue(MachineFunction &MF,
 //------------------------------------------------------------------------------
 
 void XtensaFrameLowering::emitEpilogue(MachineFunction &MF,
-                                       MachineBasicBlock &MBB) const override
+                                       MachineBasicBlock &MBB) const 
 {
   assert(false && "XtensaFrameLowering::emitEpilogue not implemented");
 }
@@ -49,10 +48,10 @@ void XtensaFrameLowering::emitEpilogue(MachineFunction &MF,
 //------------------------------------------------------------------------------
 
 bool XtensaFrameLowering::spillCalleeSavedRegisters(
-                                MachineBasicBlock &MBB,
-                                MachineBasicBlock::iterator MI,
-                                const std::vector<CalleeSavedInfo> &CSI,
-                                const TargetRegisterInfo *TRI) const override
+                                     MachineBasicBlock &MBB,
+                                     MachineBasicBlock::iterator MI,
+                                     const std::vector<CalleeSavedInfo> &CSI,
+                                     const TargetRegisterInfo *TRI) const
 {
   assert(false && "XtensaFrameLowering::spillCalleeSavedRegisters"
          " not implemented");
@@ -63,10 +62,10 @@ bool XtensaFrameLowering::spillCalleeSavedRegisters(
 //------------------------------------------------------------------------------
 
 bool XtensaFrameLowering::restoreCalleeSavedRegisters(
-                                MachineBasicBlock &MBB,
-                                MachineBasicBlock::iterator MI,
-                                std::vector<CalleeSavedInfo> &CSI,
-                                const TargetRegisterInfo *TRI) const override
+                                     MachineBasicBlock &MBB,
+                                     MachineBasicBlock::iterator MI,
+                                     std::vector<CalleeSavedInfo> &CSI,
+                                     const TargetRegisterInfo *TRI) const
 {
   assert(false && "XtensaFrameLowering::restoreCalleeSavedRegisters"
          " not implemented");
@@ -78,9 +77,9 @@ bool XtensaFrameLowering::restoreCalleeSavedRegisters(
 
 MachineBasicBlock::iterator
 XtensaFrameLowering::eliminateCallFramePseudoInstr(
-                                MachineFunction &MF,
-                                MachineBasicBlock &MBB,
-                                MachineBasicBlock::iterator I) const override
+                                     MachineFunction &MF,
+                                     MachineBasicBlock &MBB,
+                                     MachineBasicBlock::iterator I) const
 {
   assert(false && "XtensaFrameLowering::eliminateCallFramePseudoInstr"
          " not implemented");
@@ -90,7 +89,7 @@ XtensaFrameLowering::eliminateCallFramePseudoInstr(
 
 //------------------------------------------------------------------------------
 
-bool XtensaFrameLowering::hasFP(const MachineFunction &MF) const override
+bool XtensaFrameLowering::hasFP(const MachineFunction &MF) const
 {
   assert(false && "XtensaFrameLowering::hasFP not implemented");
   return false;
@@ -99,9 +98,9 @@ bool XtensaFrameLowering::hasFP(const MachineFunction &MF) const override
 //------------------------------------------------------------------------------
 
 void XtensaFrameLowering::determineCalleeSaves(
-                                MachineFunction &MF,
-                                BitVector &SavedRegs,
-                                RegScavenger *RS) const override
+                                     MachineFunction &MF,
+                                     BitVector &SavedRegs,
+                                     RegScavenger *RS) const
 {
   assert(false && "XtensaFrameLowering::determineCalleeSaves"
          " not implemented");
@@ -110,10 +109,9 @@ void XtensaFrameLowering::determineCalleeSaves(
 //------------------------------------------------------------------------------
 
 void XtensaFrameLowering::processFunctionBeforeFrameFinalized(
-                                MachineFunction &MF,
-                                RegScavenger *RS) const override
+                                     MachineFunction &MF,
+                                     RegScavenger *RS) const
 {
   assert(false && "XtensaFrameLowering::processFunctionBeforeFrameFinalized"
          " not implemented");
 }
-

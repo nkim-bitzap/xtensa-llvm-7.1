@@ -12,7 +12,7 @@
 //===----------------------------------------------------------------------===//
 
 #include "XtensaSelectionDAGInfo.h"
-#include "XCoreTargetMachine.h"
+#include "XtensaTargetMachine.h"
 
 #include <cassert>
 
@@ -20,19 +20,23 @@
 
 using namespace llvm;
 
+//------------------------------------------------------------------------------
+// XtensaSelectionDAGInfo implementation
+//------------------------------------------------------------------------------
+
 SDValue
 XtensaSelectionDAGInfo::EmitTargetCodeForMemcpy(
-                               SelectionDAG &DAG,
-                               const SDLoc &dl,
-                               SDValue Chain,
-                               SDValue Op1,
-                               SDValue Op2,
-                               SDValue Op3,
-                               unsigned Align,
-                               bool isVolatile,
-                               bool AlwaysInline,
-                               MachinePointerInfo DstPtrInfo,
-                               MachinePointerInfo SrcPtrInfo) const override
+                                          SelectionDAG &DAG,
+                                          const SDLoc &dl,
+                                          SDValue Chain,
+                                          SDValue Op1,
+                                          SDValue Op2,
+                                          SDValue Op3,
+                                          unsigned Align,
+                                          bool isVolatile,
+                                          bool AlwaysInline,
+                                          MachinePointerInfo DstPtrInfo,
+                                          MachinePointerInfo SrcPtrInfo) const
 {
   assert(false && "XtensaSelectionDAGInfo::EmitTargetCodeForMemcpy"
          " not implemented");

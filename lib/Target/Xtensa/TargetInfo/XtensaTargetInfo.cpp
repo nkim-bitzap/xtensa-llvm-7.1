@@ -8,6 +8,8 @@
 //===----------------------------------------------------------------------===//
 
 #include "Xtensa.h"
+#include "MCTargetDesc/XtensaMCTargetDesc.h"
+
 #include "llvm/IR/Module.h"
 #include "llvm/Support/TargetRegistry.h"
 
@@ -18,7 +20,9 @@ Target &llvm::getTheXtensaTarget() {
   return TheXtensaTarget;
 }
 
+// prior to this, need to add 'xtensa' explicitly to the list of known
+// triples in 'lib/Support/Triple.c' resp. 'include/llvm/ADT/Triple.h'
 extern "C" void LLVMInitializeXtensaTargetInfo() {
-  RegisterTarget<Triple::xtensa, 
-                 X(getTheXtensaTarget(), "xtensa", "Xtensa", "Xtensa");
+  RegisterTarget<Triple::xtensa> X(
+    getTheXtensaTarget(), "xtensa", "Xtensa", "Xtensa");
 }

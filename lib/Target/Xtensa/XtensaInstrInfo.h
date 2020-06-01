@@ -17,10 +17,10 @@
 #include "XtensaRegisterInfo.h"
 #include "llvm/CodeGen/TargetInstrInfo.h"
 
-namespace llvm {
-
 #define GET_INSTRINFO_HEADER
 #include "XtensaGenInstrInfo.inc"
+
+namespace llvm {
 
 class XtensaInstrInfo : public XtensaGenInstrInfo {
     const XtensaRegisterInfo RI;
@@ -48,6 +48,9 @@ class XtensaInstrInfo : public XtensaGenInstrInfo {
                      const DebugLoc &DL, unsigned DestReg, unsigned SrcReg,
                      bool KillSrc) const override;
 
-}; // end of namespace llvm
+};
+
+} // end of namespace llvm
 
 #endif /* LLVM_LIB_TARGET_XTENSA_XTENSAINSTRINFO_H */
+

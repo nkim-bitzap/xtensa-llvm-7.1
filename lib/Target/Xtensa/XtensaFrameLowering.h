@@ -15,7 +15,6 @@
 #define LLVM_LIB_TARGET_XTENSA_XTENSAFRAMELOWERING_H
 
 #include "llvm/CodeGen/TargetFrameLowering.h"
-#include "llvm/Target/TargetMachine.h"
 
 namespace llvm {
 
@@ -55,6 +54,5 @@ class XtensaFrameLowering: public TargetFrameLowering {
 };
 
 } // end of namespace llvm
-
 
 #endif /* LLVM_LIB_TARGET_XTENSA_XTENSAFRAMELOWERING_H */

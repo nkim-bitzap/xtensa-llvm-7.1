@@ -43,16 +43,14 @@ XtensaTargetLowering::XtensaTargetLowering(const TargetMachine &TM,
 
 //------------------------------------------------------------------------------
 
-const char *
-XtensaTargetLowering::getTargetNodeName(unsigned Opcode) const override
-{
+const char *XtensaTargetLowering::getTargetNodeName(unsigned Opcode) const {
   return "unknown";
 }
 
 //------------------------------------------------------------------------------
 
 SDValue XtensaTargetLowering::LowerOperation(SDValue Op,
-                                             SelectionDAG &DAG) const override
+                                             SelectionDAG &DAG) const
 {
   SDValue ret;
   return ret;
@@ -112,7 +110,7 @@ SDValue XtensaTargetLowering::LowerFormalArguments(
                               const SmallVectorImpl<ISD::InputArg> &Ins,
                               const SDLoc &dl,
                               SelectionDAG &DAG,
-                              SmallVectorImpl<SDValue> &InVals) const override
+                              SmallVectorImpl<SDValue> &InVals) const
 {
   SDValue ret;
   return ret;
@@ -122,7 +120,7 @@ SDValue XtensaTargetLowering::LowerFormalArguments(
 
 SDValue XtensaTargetLowering::LowerCall(
                               TargetLowering::CallLoweringInfo &CLI,
-                              SmallVectorImpl<SDValue> &InVals) const override
+                              SmallVectorImpl<SDValue> &InVals) const
 {
   SDValue ret;
   return ret;
@@ -136,7 +134,7 @@ SDValue XtensaTargetLowering::LowerReturn(SDValue Chain,
                               const SmallVectorImpl<ISD::OutputArg> &Outs,
                               const SmallVectorImpl<SDValue> &OutVals,
                               const SDLoc &dl,
-                              SelectionDAG &DAG) const override
+                              SelectionDAG &DAG) const
 {
   SDValue ret;
   return ret;

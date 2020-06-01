@@ -22,6 +22,10 @@
 
 using namespace llvm;
 
+//------------------------------------------------------------------------------
+// XtensaMCInstLower implementation
+//------------------------------------------------------------------------------
+
 XtensaMCInstLower::XtensaMCInstLower(class AsmPrinter &asmprinter)
 : Printer(asmprinter)
 {}
@@ -38,7 +42,7 @@ MCOperand XtensaMCInstLower::LowerSymbolOperand(const MachineOperand &MO,
                                                  MachineOperandType MOTy,
                                                  unsigned Offset) const
 {
-  return MCOperand::create(0);
+  return MCOperand();
 }
 
 //------------------------------------------------------------------------------
@@ -46,7 +50,7 @@ MCOperand XtensaMCInstLower::LowerSymbolOperand(const MachineOperand &MO,
 MCOperand XtensaMCInstLower::LowerOperand(const MachineOperand& MO,
                                           unsigned offset) const
 {
-  return MCOperand::create(0);
+  return MCOperand();
 }
 
 //------------------------------------------------------------------------------

@@ -11,85 +11,96 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "Xtensa.h"
 #include "XtensaRegisterInfo.h"
+#include "Xtensa.h"
 #include "XtensaInstrInfo.h"
 #include "XtensaMachineFunctionInfo.h"
 #include "XtensaSubtarget.h"
 
+// #include "MCTargetDesc/XtensaMCTargetDesc.h"
+
+#include "llvm/CodeGen/MachineFrameInfo.h"
+#include "llvm/CodeGen/MachineFunction.h"
+#include "llvm/CodeGen/MachineInstrBuilder.h"
+#include "llvm/CodeGen/MachineModuleInfo.h"
+#include "llvm/CodeGen/MachineRegisterInfo.h"
+#include "llvm/CodeGen/RegisterScavenging.h"
+#include "llvm/CodeGen/TargetFrameLowering.h"
+#include "llvm/Target/TargetMachine.h"
+#include "llvm/Target/TargetOptions.h"
 #include "llvm/ADT/BitVector.h"
 
 using namespace llvm;
 
 #define DEBUG_TYPE "xtensa-reg-info"
 
+#define GET_REGINFO_ENUM
 #define GET_REGINFO_TARGET_DESC
 #include "XtensaGenRegisterInfo.inc"
 
 XtensaRegisterInfo::XtensaRegisterInfo()
-: XtensaGenRegisterInfo(Xtensa::LR)
+: XtensaGenRegisterInfo(Xtensa::AR0)
 {}
 
 //------------------------------------------------------------------------------
 
-bool XtensaRegisterInfo::enableMultipleCopyHints() const override {
+bool XtensaRegisterInfo::enableMultipleCopyHints() const {
   return true;
 }
 
 //------------------------------------------------------------------------------
 
 const MCPhysReg*
-Xtensa::getCalleeSavedRegs(const MachineFunction *MF) const override {
+XtensaRegisterInfo::getCalleeSavedRegs(const MachineFunction *MF) const {
   return 0;
 }
 
 //------------------------------------------------------------------------------
 
-BitVector Xtensa::getReservedRegs(const MachineFunction &MF) const override {
+BitVector
+XtensaRegisterInfo::getReservedRegs(const MachineFunction &MF) const {
   BitVector reserved(getNumRegs());
-  return reserved();
+  return reserved;
 }
 
 //------------------------------------------------------------------------------
 
-bool Xtensa::enableMultipleCopyHints() const override {
+bool XtensaRegisterInfo::requiresRegisterScavenging(
+                                             const MachineFunction &MF) const
+{
   return false;
 }
 
 //------------------------------------------------------------------------------
 
-bool
-Xtensa::requiresRegisterScavenging(const MachineFunction &MF) const override {
+bool XtensaRegisterInfo::trackLivenessAfterRegAlloc(
+                                             const MachineFunction &MF) const
+{
   return false;
 }
 
 //------------------------------------------------------------------------------
 
-bool
-Xtensa::trackLivenessAfterRegAlloc(const MachineFunction &MF) const override {
+bool XtensaRegisterInfo::useFPForScavengingIndex(
+                                             const MachineFunction &MF) const
+{
   return false;
 }
 
 //------------------------------------------------------------------------------
 
-bool
-Xtensa::useFPForScavengingIndex(const MachineFunction &MF) const override {
-  return false;
-}
-
-//------------------------------------------------------------------------------
-
-void Xtensa::eliminateFrameIndex(MachineBasicBlock::iterator II,
-                                 int SPAdj,
-                                 unsigned FIOperandNum,
-                                 RegScavenger *RS = nullptr) const override
+void XtensaRegisterInfo::eliminateFrameIndex(MachineBasicBlock::iterator II,
+                                             int SPAdj,
+                                             unsigned FIOperandNum,
+                                             RegScavenger *RS) const
 {
   // not yet implemented
 }
 
 //------------------------------------------------------------------------------
 
-unsigned Xtensa::getFrameRegister(const MachineFunction &MF) const override {
+unsigned
+XtensaRegisterInfo::getFrameRegister(const MachineFunction &MF) const {
   return 0;
 }
 

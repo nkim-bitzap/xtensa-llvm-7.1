@@ -11,13 +11,18 @@
 //
 //===----------------------------------------------------------------------===//
 
+#include "XtensaTargetMachine.h"
+
+#include "llvm/CodeGen/SelectionDAG.h"
+#include "llvm/CodeGen/SelectionDAGISel.h"
+
 using namespace llvm;
 
 namespace {
 
 class XtensaDAGToDAGISel : public SelectionDAGISel {
   public:
-    XtensaDAGToDAGISel(XCoreTargetMachine &TM, CodeGenOpt::Level OptLevel)
+    XtensaDAGToDAGISel(XtensaTargetMachine &TM, CodeGenOpt::Level OptLevel)
     : SelectionDAGISel(TM, OptLevel)
     {}
 };

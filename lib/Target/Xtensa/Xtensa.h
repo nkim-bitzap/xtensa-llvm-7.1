@@ -15,20 +15,14 @@
 #ifndef LLVM_LIB_TARGET_XTENSA_XTENSA_H
 #define LLVM_LIB_TARGET_XTENSA_XTENSA_H
 
-#include "MCTargetDesc/XCoreMCTargetDesc.h"
-#include "llvm/Target/TargetMachine.h"
-
 namespace llvm {
-  class FunctionPass;
-  class ModulePass;
-  class TargetMachine;
-  class XtensaTargetMachine;
-  class formatted_raw_ostream;
+class FunctionPass;
 
-  // insert target passes here as the backend matures,
-  // nothing useful for xtensa here yet
+// insert target passes here as the backend matures, nothing useful
+// for xtensa code generation here yet
+FunctionPass *createXCoreFrameToArgsOffsetEliminationPass();
 
-} // end namespace llvm;
+} // end namespace llvm
 
 #endif /* LLVM_LIB_TARGET_XTENSA_XTENSA_H */
 

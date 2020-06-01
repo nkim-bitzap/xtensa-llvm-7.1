@@ -13,7 +13,6 @@
 
 #include "Xtensa.h"
 #include "XtensaSubtarget.h"
-#include "Xtensa.h"
 #include "llvm/Support/TargetRegistry.h"
   
 using namespace llvm;
@@ -24,6 +23,8 @@ using namespace llvm;
 #define GET_SUBTARGETINFO_CTOR
 #include "XtensaGenSubtargetInfo.inc"
 
+//------------------------------------------------------------------------------
+// XtensaSubtarget implementation
 //------------------------------------------------------------------------------
 
 void XtensaSubtarget::anchor() {}
@@ -43,19 +44,31 @@ XtensaSubtarget::XtensaSubtarget(const Triple &TT,
 
 //------------------------------------------------------------------------------
 
-XTENSA_ABI XtensaSubtarget::getABIType() const
-{
-  return _ABI;
+const XtensaInstrInfo *XtensaSubtarget::getInstrInfo() const {
+  return &InstrInfo;
 }
 
 //------------------------------------------------------------------------------
 
-bool XtensaSubtarget::isWindowABI() const {
-  return getABIType() == Window_ABI;
+const XtensaFrameLowering *XtensaSubtarget::getFrameLowering() const {
+  return &FrameLowering;
 }
 
 //------------------------------------------------------------------------------
 
-bool XtensaSubtarget::isCall0ABI() const {
-  return getABIType() == Call0_ABI;
+const XtensaTargetLowering *XtensaSubtarget::getTargetLowering() const {
+  return &TLInfo;
 }
+
+//------------------------------------------------------------------------------
+
+const XtensaSelectionDAGInfo *XtensaSubtarget::getSelectionDAGInfo() const {
+  return &TSInfo;
+}
+
+//------------------------------------------------------------------------------
+
+const TargetRegisterInfo *XtensaSubtarget::getRegisterInfo() const {
+  return &InstrInfo.getRegisterInfo();
+}
+

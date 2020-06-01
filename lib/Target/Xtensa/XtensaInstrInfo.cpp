@@ -11,16 +11,24 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "Xtensa.h"
 #include "XtensaInstrInfo.h"
+#include "Xtensa.h"
+#include "XtensaMachineFunctionInfo.h"
 
+#include "llvm/CodeGen/MachineConstantPool.h"
 #include "llvm/CodeGen/MachineFrameInfo.h"
 #include "llvm/CodeGen/MachineInstrBuilder.h"
 #include "llvm/CodeGen/MachineMemOperand.h"
 
+#include "llvm/ADT/STLExtras.h"
+#include "llvm/IR/Constants.h"
+#include "llvm/IR/Function.h"
+#include "llvm/MC/MCContext.h"
 #include "llvm/Support/Debug.h"
 #include "llvm/Support/ErrorHandling.h"
 #include "llvm/Support/TargetRegistry.h"
+
+#include <iostream>
 
 using namespace llvm;
 
@@ -29,12 +37,14 @@ using namespace llvm;
 
 //------------------------------------------------------------------------------
 
-XtensaInstrInfo::XtensaInstrInfo(): TargetInstrInfo()
-{}
+void XtensaInstrInfo::anchor() {}
 
 //------------------------------------------------------------------------------
 
-void XtensaInstrInfo::anchor() {}
+XtensaInstrInfo::XtensaInstrInfo()
+: XtensaGenInstrInfo(),
+  RI()
+{}
 
 //------------------------------------------------------------------------------
 
@@ -48,7 +58,7 @@ bool XtensaInstrInfo::analyzeBranch(MachineBasicBlock &MBB,
                                     MachineBasicBlock *&TBB,
                                     MachineBasicBlock *&FBB,
                                     SmallVectorImpl<MachineOperand> &Cond,
-                                    bool AllowModify) const override
+                                    bool AllowModify) const
 {
   std::cout << "XtensaInstrInfo::analyzeBranch not yet implemented"
             << std::endl;
@@ -63,7 +73,7 @@ unsigned XtensaInstrInfo::insertBranch(MachineBasicBlock &MBB,
                                        MachineBasicBlock *FBB,
                                        ArrayRef<MachineOperand> Cond,
                                        const DebugLoc &DL,
-                                       int *BytesAdded) const override
+                                       int *BytesAdded) const
 {
   std::cout << "XtensaInstrInfo::insertBranch not yet implemented"
             << std::endl;
@@ -74,7 +84,7 @@ unsigned XtensaInstrInfo::insertBranch(MachineBasicBlock &MBB,
 //------------------------------------------------------------------------------
 
 unsigned XtensaInstrInfo::removeBranch(MachineBasicBlock &MBB,
-                                       int *BytesRemoved) const override
+                                       int *BytesRemoved) const
 {
   std::cout << "XtensaInstrInfo::removeBranch not yet implemented"
             << std::endl;
@@ -89,11 +99,8 @@ void XtensaInstrInfo::copyPhysReg(MachineBasicBlock &MBB,
                                   const DebugLoc &DL,
                                   unsigned DestReg,
                                   unsigned SrcReg,
-                                  bool KillSrc) const override
+                                  bool KillSrc) const
 {
   std::cout << "XtensaInstrInfo::copyPhysReg not yet implemented"
             << std::endl;
-
-  return 0;
 }
-
