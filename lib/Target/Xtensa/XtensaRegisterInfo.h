@@ -50,5 +50,5 @@ struct XtensaRegisterInfo : public XtensaGenRegisterInfo {
 
 } // end of namespace llvm
 
-#endif /* LLVM_LIB_TARGET_XTENSA_XTENSAREGISTERINFO_H */ 
+#endif // LLVM_LIB_TARGET_XTENSA_XTENSAREGISTERINFO_H
 

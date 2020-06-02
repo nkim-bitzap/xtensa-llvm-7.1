@@ -52,5 +52,5 @@ class XtensaInstrInfo : public XtensaGenInstrInfo {
 
 } // end of namespace llvm
 
-#endif /* LLVM_LIB_TARGET_XTENSA_XTENSAINSTRINFO_H */
+#endif // LLVM_LIB_TARGET_XTENSA_XTENSAINSTRINFO_H
 

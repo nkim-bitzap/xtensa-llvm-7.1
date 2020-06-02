@@ -15,6 +15,7 @@
 #include "Xtensa.h"
 #include "XtensaISelLowering.h"
 #include "XtensaSubtarget.h"
+#include "XtensaTargetMachine.h"
 
 #include "llvm/CodeGen/CallingConvLower.h"
 #include "llvm/CodeGen/MachineFrameInfo.h"
@@ -34,9 +35,16 @@ using namespace llvm;
 
 #define DEBUG_TYPE "xtensa-lower"
 
-XtensaTargetLowering::XtensaTargetLowering(const TargetMachine &TM,
-                                           const XtensaSubtarget &Subtarget)
-: TargetLowering(_TM), _TM(TM), _Subtarget(Subtarget)
+// DAG->viewGraph("dag-combine1 input for " + BlockName);
+// DAG->dump();
+
+//------------------------------------------------------------------------------
+// XtensaTargetLowering implementation
+//------------------------------------------------------------------------------
+
+XtensaTargetLowering::XtensaTargetLowering(const XtensaTargetMachine &TM,
+                                           const XtensaSubtarget &ST)
+: TargetLowering(TM), Subtarget(ST)
 {
   // TODO, extend properly
 }

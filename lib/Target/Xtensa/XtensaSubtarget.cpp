@@ -12,7 +12,8 @@
 //===----------------------------------------------------------------------===//
 
 #include "Xtensa.h"
-#include "XtensaSubtarget.h"
+#include "XtensaTargetMachine.h"
+
 #include "llvm/Support/TargetRegistry.h"
   
 using namespace llvm;
@@ -34,13 +35,44 @@ void XtensaSubtarget::anchor() {}
 XtensaSubtarget::XtensaSubtarget(const Triple &TT,
                                  const std::string &CPU,
                                  const std::string &FS,
-                                 const TargetMachine &TM)
+                                 const XtensaTargetMachine &TMarg)
 : XtensaGenSubtargetInfo(TT, CPU, FS),
+  TM(TMarg),
   InstrInfo(),
   FrameLowering(*this),
   TLInfo(TM, *this),
   TSInfo()
 {}
+
+//------------------------------------------------------------------------------
+
+bool XtensaSubtarget::isWindowABI() const {
+  return TM.getABIInfo().getABIType() == XtensaABIInfo::Window_ABI;
+}
+
+//------------------------------------------------------------------------------
+
+bool XtensaSubtarget::isCall0ABI() const {
+  return TM.getABIInfo().getABIType() == XtensaABIInfo::Call0_ABI;
+}
+
+//------------------------------------------------------------------------------
+
+bool XtensaSubtarget::hasInt32Multiply() const {
+  return Int32Multiply;
+}
+
+//------------------------------------------------------------------------------
+
+bool XtensaSubtarget::hasInt32Divide() const {
+  return Int32Divide;
+}
+
+//------------------------------------------------------------------------------
+
+bool XtensaSubtarget::hasBooleanRegs() const {
+  return BooleanRegs;
+}
 
 //------------------------------------------------------------------------------
 

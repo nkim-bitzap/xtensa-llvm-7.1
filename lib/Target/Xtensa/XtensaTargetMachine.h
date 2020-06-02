@@ -1,5 +1,3 @@
-//===-- XtensaTargetMachine.h - Define TargetMachine for Xtensa -*- C++ -*-===//
-
 //===-- XtensaTargetMachine.h - Define TargetMachine for Xtensa -----------===//
 //
 //                     The LLVM Compiler Infrastructure
@@ -68,9 +66,6 @@ class XtensaTargetMachine : public LLVMTargetMachine {
 
     const XtensaABIInfo &getABIInfo() const;
 
-    bool isWindowABI() const;
-    bool isCall0ABI() const;
-
     const XtensaSubtarget *getSubtargetImpl() const;
     const XtensaSubtarget *getSubtargetImpl(const Function &) const;
 
@@ -99,5 +94,5 @@ class XtensaPassConfig : public TargetPassConfig {
 
 } // end of llvm namespace
 
-#endif /* LLVM_LIB_TARGET_XTENSA_XTENSATARGETMACHINE_H */
+#endif // LLVM_LIB_TARGET_XTENSA_XTENSATARGETMACHINE_H
 

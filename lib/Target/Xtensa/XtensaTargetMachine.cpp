@@ -90,17 +90,19 @@ static CodeModel::Model getEffectiveCodeModel(Optional<CodeModel::Model> CM) {
 //------------------------------------------------------------------------------
 
 XtensaABIInfo::XtensaABIInfo(const TargetOptions &Options) {
-  if (Options.getABIName.empty()) {
+  MCTargetOptions MCOpts = Options.MCOptions;
+
+  if (MCOpts.getABIName().empty()) {
     _ABI = Call0_ABI;
   }
   else {
-    if (Options.getABIName() == "window") _ABI = Window_ABI;
-    else if (Options.getABIName() == "call0") _ABI = Call0_ABI;
+    if (MCOpts.getABIName() == "window") _ABI = Window_ABI;
+    else if (MCOpts.getABIName() == "call0") _ABI = Call0_ABI;
     else {
       _ABI = Call0_ABI;
 
       errs() << "warning: unknown Xtensa ABI '"
-             << Options.getABIName() << "', assuming 'call0'\n";
+             << MCOpts.getABIName() << "', assuming 'call0'\n";
     }
   }
 }
@@ -147,18 +149,6 @@ XtensaTargetMachine::~XtensaTargetMachine() = default;
 
 const XtensaABIInfo &XtensaTargetMachine::getABIInfo() const {
   return ABIInfo;
-}
-
-//------------------------------------------------------------------------------
-
-bool XtensaTargetMachine::isWindowABI() const {
-  return ABIInfo.getABIType() == XtensaABIInfo::Window_ABI;
-}
-
-//------------------------------------------------------------------------------
-
-bool XtensaTargetMachine::isCall0ABI() const {
-  return ABIInfo.getABIType() == XtensaABIInfo::Call0_ABI;
 }
 
 //------------------------------------------------------------------------------
